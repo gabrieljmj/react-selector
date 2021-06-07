@@ -40,7 +40,7 @@ export default function MyApp() {
           options={options}
           value={color}
           onChange={setColor}
-          htmlInputProps={{
+          htmlInputAttributes={{
             name: 'color',
           }}
         />
@@ -60,12 +60,12 @@ export default function MyApp() {
 | ```className``` | _undefined_ | ```false``` | ```string``` | Class name for selector header. |
 | ```disabled``` | ```false``` | ```false``` | ```boolean``` | Disable selector |
 | ```fullWidth``` | ```false``` | ```false``` | ```boolean``` | Adds CSS property to ocupy 100% of parent element width |
-| ```htmlInputProps``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLSelectElement>``` | Native hidden HTML select props. |
+| ```htmlInputAttributes``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLSelectElement>``` | Native hidden HTML select props. |
 | ```label``` | - | ```false``` |```string``` | Selector label that appears when nothing is selected. |
 | ```noResultMessage``` | ```Search...``` | ```false``` | ```string``` | Message that shows up when nothing is returned from search |
 | ```onChange``` | - | ```false``` | ```function``` | On change value handler. Receives value as unique property. |
 | ```options``` | - | ```true``` | ```array``` | List of selector options. |
-| ```value``` | - | ```true``` | ```string | number``` | Selected value. "No value" is represented by ```undefined``` |
+| ```value``` | - | ```true``` | ```string``` | ```number``` | Selected value. "No value" is represented by ```undefined``` |
 | ```arrowIcons``` | ```{ up: undefined, down: undefined }``` | ```false``` | ```object``` | Change arrow icons. Pass react nodes to ```up``` and ```down``` properties. |
 
 
