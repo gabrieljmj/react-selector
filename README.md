@@ -12,6 +12,7 @@ npm install --save @gabrieljmj/react-selector
 
 ## Preview
 
+[Click here](https://codesandbox.io/s/billowing-rain-vp4gw?file=/src/App.js:99-141) to see a preview.
 
 ## Usage
 
