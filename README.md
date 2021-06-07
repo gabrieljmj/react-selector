@@ -13,17 +13,33 @@ npm install --save @gabrieljmj/react-selector
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import { useState } from 'react'
 
-import MyComponent from '@gabrieljmj/react-selector'
+import Selector from '@gabrieljmj/react-selector'
 import '@gabrieljmj/react-selector/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+export default function MyApp() {
+  const [color, setColor] = useState(-1);
+  const options = [
+    { value: 'red', label: 'Red' },
+    { value: 'black', label: 'Black' },
+    { value: 'green', label: 'Green' },
+  ];
+
+  return (
+    <Selector
+      label="Pick a color"
+      options={options}
+      value={color}
+      onChange={setColor}
+    />
+  )
 }
 ```
+
+## Props
+
+
 
 ## License
 
