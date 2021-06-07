@@ -18,7 +18,7 @@ export interface Props {
   className?: React.ClassAttributes<HTMLDivElement>
   disabled?: boolean
   fullWidth?: boolean
-  htmlInputAttributes?: React.HTMLAttributes<HTMLSelectElement>
+  htmlInputProps?: React.HTMLAttributes<HTMLSelectElement>
   label: string
   noResultMessage?: string
   onChange: CallableFunction
@@ -35,7 +35,7 @@ const Selector: React.FC<Props> = ({
   value = '',
   onChange,
   disabled,
-  htmlInputAttributes = {},
+  htmlInputProps = {},
   containerProps = {},
   searchInputProps = {},
   fullWidth = false,
@@ -113,7 +113,7 @@ const Selector: React.FC<Props> = ({
           value={value}
           onChange={() => {}}
           disabled={disabled}
-          {...htmlInputAttributes}
+          {...htmlInputProps}
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
