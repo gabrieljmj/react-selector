@@ -4,7 +4,7 @@
   "description": "React selector component",
   "author": "gabrieljmj",
   "license": "MIT",
-  "repository": "gabrieljmj/react-selector",
+  "repository": "https://github.com/gabrieljmj/react-selector",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
