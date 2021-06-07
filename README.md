@@ -56,7 +56,7 @@ export default function MyApp() {
 | Prop | Default value | Required | Type | Description |
 | ---- | ------------- | -------- | ---- | ----------- |
 | ```containerProps``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLDivElement>``` | Container element extra props. |
-| ```searchInputProp```s | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLInputElement>``` | Search input element extra properties. |
+| ```searchInputProps``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLInputElement>``` | Search input element extra properties. |
 | ```className``` | _undefined_ | ```false``` | ```string``` | Class name for selector header. |
 | ```disabled``` | ```false``` | ```false``` | ```boolean``` | Disable selector |
 | ```fullWidth``` | ```false``` | ```false``` | ```boolean``` | Adds CSS property to ocupy 100% of parent element width |
