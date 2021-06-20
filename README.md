@@ -67,7 +67,7 @@ export default function MyApp() {
 | ```options``` | - | ```true``` | ```array``` | List of selector options. |
 | ```value``` | - | ```true``` | ```string``` | ```number``` | Selected value. "No value" is represented by ```undefined``` |
 | ```arrowIcons``` | ```{ up: undefined, down: undefined }``` | ```false``` | ```object``` | Change arrow icons. Pass react nodes to ```up``` and ```down``` properties. |
-
+| ```strictComparison``` | ```true``` | ```false``` | ```boolean``` | Enables strict values comparison (```===```). Enabled by default. |
 
 ## License
 
