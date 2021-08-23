@@ -215,4 +215,29 @@ describe('Selector', () => {
     expect(newShowedOptions).toHaveLength(2)
     expect(newShowedOptions).not.toContain(invalidLabel)
   })
+
+  it('Should strictly compare when strictComparison prop value is true', async () => {
+    const defaultLabel = 'Test label'
+    const expectedLabel = 'Label 2'
+    const expectedValue = 2
+    const options = [
+      { value: 1, label: 'Label 1' },
+      { value: expectedValue, label: expectedLabel }
+    ]
+
+    const { getByTestId } = render(
+      <Selector
+        label={defaultLabel}
+        options={options}
+        value={expectedValue.toString()}
+        onChange={console.log}
+        strictComparison
+      />
+    )
+
+    const selector = await waitForElement(() => getByTestId('selector'))
+    const label = selector.querySelector('span').innerHTML
+
+    expect(label).toEqual('')
+  })
 })

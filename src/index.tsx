@@ -1,6 +1,7 @@
 import * as React from 'react'
 import classes from './styles.module.css'
 import clsx from 'clsx'
+import { compareValues } from './utils/comparison'
 
 export interface Option {
   label: string
@@ -27,6 +28,7 @@ export interface Props {
   showSearchInput?: boolean
   value: string | number
   arrowIcons?: Icons
+  strictComparison?: boolean
 }
 
 const Selector: React.FC<Props> = ({
@@ -43,7 +45,8 @@ const Selector: React.FC<Props> = ({
   searchInputPlaceholder = 'Search...',
   noResultMessage = 'No results.',
   className = undefined,
-  arrowIcons = { up: undefined, down: undefined }
+  arrowIcons = { up: undefined, down: undefined },
+  strictComparison = true
 }: Props) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
   const [search, setSearch] = React.useState<string>('')
@@ -74,7 +77,9 @@ const Selector: React.FC<Props> = ({
     setIsOpen(!isOpen)
   }
   const findOptionLabel = (optionValue: string | number) =>
-    options?.filter((option: Option) => option.value === optionValue)[0]?.label
+    options?.filter((option: Option) =>
+      compareValues(option.value, optionValue, strictComparison)
+    )[0]?.label
 
   const label = value !== '' ? findOptionLabel(value) : inputLabel
 
