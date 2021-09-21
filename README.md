@@ -55,12 +55,12 @@ export default function MyApp() {
 
 | Prop | Default value | Required | Type | Description |
 | ---- | ------------- | -------- | ---- | ----------- |
-| ```containerProps``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLDivElement>``` | Container element extra props. |
-| ```searchInputProps``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLInputElement>``` | Search input element extra properties. |
+| ```containerProps``` | _empty object_ | ```false``` | ```object``` | Container element extra props. |
+| ```searchInputProps``` | _empty object_ | ```false``` | ```object``` | Search input element extra properties. |
 | ```className``` | _undefined_ | ```false``` | ```string``` | Class name for selector header. |
 | ```disabled``` | ```false``` | ```false``` | ```boolean``` | Disable selector |
 | ```fullWidth``` | ```false``` | ```false``` | ```boolean``` | Adds CSS property to ocupy 100% of parent element width |
-| ```htmlInputAttributes``` | _empty object_ | ```false``` | ```React.HTMLAttributes<HTMLSelectElement>``` | Native hidden HTML select props. |
+| ```htmlInputProps``` | _empty object_ | ```false``` | ```object``` | Native hidden HTML select props. |
 | ```label``` | - | ```false``` |```string``` | Selector label that appears when nothing is selected. |
 | ```noResultMessage``` | ```Search...``` | ```false``` | ```string``` | Message that shows up when nothing is returned from search |
 | ```onChange``` | - | ```false``` | ```function``` | On change value handler. Receives value as unique property. |
