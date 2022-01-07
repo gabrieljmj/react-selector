@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import * as React from 'react'
 import classes from './styles.module.css'
-import clsx from 'clsx'
 import { compareValues } from './utils/comparison'
 
 export interface Option {
@@ -50,32 +50,37 @@ const Selector: React.FC<Props> = ({
 }: Props) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
   const [search, setSearch] = React.useState<string>('')
-  const foundOptions = options?.filter((option: Option) => {
-    if (!search) {
-      return true
-    }
+  const foundOptions = React.useMemo<Option[]>(() => {
+    return options.filter((option: Option) => {
+      if (!search) {
+        return true
+      }
 
-    return option.label.toLowerCase().search(search.toLowerCase()) > -1
-  })
+      return option.label.toLowerCase().search(search.toLowerCase()) > -1
+    })
+  }, [options, search])
   const maskRef = React.useRef<HTMLDivElement>(null)
 
-  const handleMaskClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (e.target === maskRef.current) {
-      setIsOpen(false)
-    }
-  }
+  const handleMaskClick: React.MouseEventHandler<HTMLDivElement> =
+    React.useCallback(
+      (e) => {
+        if (e.target === maskRef.current) {
+          setIsOpen(false)
+        }
+      },
+      [maskRef]
+    )
 
-  const toggling = () => {
+  const toggling = React.useCallback(() => {
     if (disabled) {
-      if (isOpen) {
-        setIsOpen(false)
-      }
+      setIsOpen(false)
 
       return
     }
 
-    setIsOpen(!isOpen)
-  }
+    setIsOpen((prev) => !prev)
+  }, [])
+
   const findOptionLabel = (optionValue: string | number) =>
     options?.filter((option: Option) =>
       compareValues(option.value, optionValue, strictComparison)
@@ -83,10 +88,13 @@ const Selector: React.FC<Props> = ({
 
   const label = value !== '' ? findOptionLabel(value) : inputLabel
 
-  const onClickChange = (newValue: string | number) => {
-    onChange(newValue)
-    setIsOpen(false)
-  }
+  const onClickChange = React.useCallback(
+    (newValue: string | number) => () => {
+      onChange(newValue)
+      setIsOpen(false)
+    },
+    []
+  )
 
   React.useEffect(() => {
     setIsOpen(false)
@@ -163,7 +171,7 @@ const Selector: React.FC<Props> = ({
                 <li
                   key={option.value}
                   className={classes.listItem}
-                  onClick={() => onClickChange(option.value)}
+                  onClick={onClickChange(option.value)}
                 >
                   {option.label}
                 </li>
