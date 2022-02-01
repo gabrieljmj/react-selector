@@ -106,8 +106,14 @@ const Selector: React.FC<Props> = ({
     }
   }, [isOpen])
 
-  const arrowUp = arrowIcons.up || <i className={classes.arrowUp} />
-  const arrowDown = arrowIcons.down || <i className={classes.arrowDown} />
+  const arrowUp = React.useMemo(
+    () => arrowIcons.up || <i className={classes.arrowUp} />,
+    [arrowIcons.up]
+  )
+  const arrowDown = React.useMemo(
+    () => arrowIcons.down || <i className={classes.arrowDown} />,
+    [arrowIcons.down]
+  )
 
   return (
     <div>
