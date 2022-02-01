@@ -79,7 +79,7 @@ const Selector: React.FC<Props> = ({
     }
 
     setIsOpen((prev) => !prev)
-  }, [])
+  }, [disabled])
 
   const findOptionLabel = (optionValue: string | number) =>
     options?.filter((option: Option) =>
