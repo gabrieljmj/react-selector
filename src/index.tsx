@@ -3,9 +3,11 @@ import * as React from 'react'
 import classes from './styles.module.css'
 import { compareValues } from './utils/comparison'
 
+export type OptionValue = string | number
+
 export interface Option {
   label: string
-  value: string | number
+  value: OptionValue
 }
 
 export interface Icons {
@@ -26,7 +28,7 @@ export interface Props {
   options: Option[]
   searchInputPlaceholder?: string
   showSearchInput?: boolean
-  value: string | number
+  value: OptionValue
   arrowIcons?: Icons
   strictComparison?: boolean
 }
@@ -79,9 +81,9 @@ const Selector: React.FC<Props> = ({
     }
 
     setIsOpen((prev) => !prev)
-  }, [])
+  }, [disabled])
 
-  const findOptionLabel = (optionValue: string | number) =>
+  const findOptionLabel = (optionValue: OptionValue) =>
     options?.filter((option: Option) =>
       compareValues(option.value, optionValue, strictComparison)
     )[0]?.label
@@ -89,7 +91,7 @@ const Selector: React.FC<Props> = ({
   const label = value !== '' ? findOptionLabel(value) : inputLabel
 
   const onClickChange = React.useCallback(
-    (newValue: string | number) => () => {
+    (newValue: OptionValue) => () => {
       onChange(newValue)
       setIsOpen(false)
     },
@@ -106,8 +108,14 @@ const Selector: React.FC<Props> = ({
     }
   }, [isOpen])
 
-  const arrowUp = arrowIcons.up || <i className={classes.arrowUp} />
-  const arrowDown = arrowIcons.down || <i className={classes.arrowDown} />
+  const arrowUp = React.useMemo(
+    () => arrowIcons.up || <i className={classes.arrowUp} />,
+    [arrowIcons.up]
+  )
+  const arrowDown = React.useMemo(
+    () => arrowIcons.down || <i className={classes.arrowDown} />,
+    [arrowIcons.down]
+  )
 
   return (
     <div>
